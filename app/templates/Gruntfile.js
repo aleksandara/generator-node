@@ -8,8 +8,10 @@ module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    nodeunit: {
-      files: ['test/**/*_test.js']
+    mochaTest: {
+      test: {
+        src: ['test/**/*_test.js']
+      }
     },
     jshint: {
       options: {
@@ -42,7 +44,9 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-mocha-test');
+
   // Default task.
-  grunt.registerTask('default', ['jshint', 'nodeunit']);
+  grunt.registerTask('default', ['jshint', 'mochaTest']);
 
 };
